@@ -3,7 +3,7 @@
 
 # smartoris-gestures
 
-Hand gestures sensing library for [Drone OS].
+Gestures recognition library for [Drone OS].
 
 [Drone OS]: https://www.drone-os.com/
 

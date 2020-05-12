@@ -1,4 +1,4 @@
-//! Hand gestures sensing library for [Drone OS].
+//! Gestures recognition library for [Drone OS].
 //!
 //! [Drone OS]: https://www.drone-os.com/
 //!
@@ -18,10 +18,21 @@
 //! std = ["smartoris-gestures/std"]
 //! ```
 
+#![feature(never_type)]
 #![feature(prelude_import)]
 #![warn(missing_docs)]
 #![warn(clippy::pedantic)]
 #![cfg_attr(not(feature = "std"), no_std)]
+#![allow(clippy::module_name_repetitions)]
+
+pub mod engines;
+
+mod gestures;
+
+pub use self::{
+    engines::GestureEngine,
+    gestures::{Gestures, GesturesSetup},
+};
 
 #[prelude_import]
 #[allow(unused_imports)]

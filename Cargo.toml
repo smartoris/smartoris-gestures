@@ -10,7 +10,7 @@ repository = "https://github.com/smartoris/smartoris-gestures"
 readme = "README.md"
 license = "MIT OR Apache-2.0"
 description = """
-Hand gestures sensing library for Drone OS.
+Gestures recognition library for Drone OS.
 """
 
 [badges]
@@ -18,8 +18,10 @@ maintenance = { status = "actively-developed" }
 
 [features]
 default = []
-std = ["drone-core/std", "futures/std"]
+std = ["drone-core/std", "smartoris-apds9960/std", "futures/std"]
 
 [dependencies]
 drone-core = { version = "0.12.0", path = "../../drone-os/drone-core" }
+smartoris-apds9960 = { version = "0.1.0", path = "../smartoris-apds9960" }
 futures = { version = "0.3.0", default-features = false }
+libm = "0.2"
