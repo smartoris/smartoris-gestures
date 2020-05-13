@@ -1,6 +1,10 @@
 //! Gesture engines.
 //!
 //! See [`GestureEngine`] for details.
+//!
+//! Available engines:
+//!
+//! * [`SimpleGestureEngine`]
 
 mod simple;
 

@@ -31,7 +31,7 @@ mod gestures;
 
 pub use self::{
     engines::GestureEngine,
-    gestures::{Gestures, GesturesSetup},
+    gestures::{Gain, Gestures, GesturesSetup, LedDriveCurrent, LedPulseLength},
 };
 
 #[prelude_import]
