@@ -1,3 +1,6 @@
+cortexm_core := 'cortexm4f_r0p1'
+stm32_mcu := 'stm32f401'
+export DRONE_RUSTFLAGS := '--cfg cortexm_core="' + cortexm_core + '" ' + '--cfg stm32_mcu="' + stm32_mcu + '"'
 features := ''
 
 # Install dependencies
@@ -24,7 +27,7 @@ doc-open: doc
 
 # Run the tests
 test:
-	cargo test --features "{{features}} std"
+	drone env -- cargo test --features "{{features}} std drone-cortexm/std drone-stm32-map/std drone-stm32-map/gpio smartoris-i2c/std smartoris-exti/std"
 
 # Update README.md
 readme:

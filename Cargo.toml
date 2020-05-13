@@ -27,3 +27,10 @@ drone-core = { version = "0.12.0", path = "../../drone-os/drone-core" }
 smartoris-apds9960 = { version = "0.1.0", path = "../smartoris-apds9960" }
 futures = { version = "0.3.0", default-features = false }
 libm = "0.2"
+
+[dev-dependencies]
+drone-cortexm = { version = "0.12.0", path = "../../drone-os/drone-cortexm" }
+drone-stm32-map = { version = "0.12.0", features = ["dma", "i2c"], path = "../../drone-os/drone-stm32-map" }
+smartoris-i2c = { version = "0.1.0", path = "../smartoris-i2c" }
+smartoris-exti = { version = "0.1.0", path = "../smartoris-exti" }
+async-trait = "0.1"
