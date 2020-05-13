@@ -32,6 +32,8 @@ impl GestureEngine for SimpleGestureEngine {
         let [up, down, left, right] = dataset;
         let y = position(up, down);
         let x = position(left, right);
+        #[cfg(feature = "log-gesture-positions")]
+        log_gesture_positions(x, y);
         if self.active {
             self.move_x += self.prev_x - x;
             self.move_y += self.prev_y - y;
@@ -69,4 +71,9 @@ fn position(a: u8, b: u8) -> f32 {
         Ordering::Less => f32::from(pos) * (f32::from(a) / f32::from(b) - 1.0),
         Ordering::Equal => 0.0,
     }
+}
+
+#[cfg(feature = "log-gesture-positions")]
+fn log_gesture_positions(x: f32, y: f32) {
+    drone_core::log::Port::new(3).write(x.to_bits()).write(y.to_bits());
 }

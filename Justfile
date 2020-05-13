@@ -1,3 +1,5 @@
+features := ''
+
 # Install dependencies
 deps:
 	rustup component add clippy
@@ -10,19 +12,19 @@ fmt:
 
 # Check the source code for mistakes
 lint:
-	cargo clippy
+	cargo clippy --features "{{features}}"
 
 # Build the documentation
 doc:
-	cargo doc
+	cargo doc --features "{{features}}"
 
 # Open the documentation in a browser
 doc-open: doc
-	cargo doc --open
+	cargo doc --features "{{features}}" --open
 
 # Run the tests
 test:
-	cargo test --features std
+	cargo test --features "{{features}} std"
 
 # Update README.md
 readme:

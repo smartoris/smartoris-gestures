@@ -186,7 +186,8 @@ impl<A, E: GestureEngine> Gestures<A, E> {
         let gflvl = apds9960.load_gflvl(i2c).await?;
         if gflvl > 0 {
             let datasets = apds9960.drain_fifo(i2c, gflvl).await?;
-            // log::Port::new(2).write_bytes(datasets);
+            #[cfg(feature = "log-gesture-datasets")]
+            log_gesture_datasets(datasets);
             for i in (0..datasets.len()).step_by(4) {
                 let dataset: [u8; 4] = datasets[i..i + 4].try_into().unwrap();
                 if dataset.iter().any(|&x| x > self.exit_threshold) {
@@ -221,4 +222,9 @@ impl LedDriveCurrent {
             Self::D300 => 3,
         }
     }
+}
+
+#[cfg(feature = "log-gesture-datasets")]
+fn log_gesture_datasets(datasets: &[u8]) {
+    drone_core::log::Port::new(2).write_bytes(datasets);
 }

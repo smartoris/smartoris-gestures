@@ -19,6 +19,8 @@ maintenance = { status = "actively-developed" }
 [features]
 default = []
 std = ["drone-core/std", "smartoris-apds9960/std", "futures/std"]
+log-gesture-datasets = []
+log-gesture-positions = []
 
 [dependencies]
 drone-core = { version = "0.12.0", path = "../../drone-os/drone-core" }
